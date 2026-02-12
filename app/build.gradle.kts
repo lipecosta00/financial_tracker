@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.financialtraker"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":feature-transactions"))
     implementation(project(":feature-dashboard"))
+    implementation(project(":feature-auth"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -45,6 +46,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.room.runtime)
     implementation(libs.org.koin.android)
     implementation(libs.org.kotlinx.coroutines.android)
 

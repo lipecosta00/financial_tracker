@@ -26,4 +26,5 @@ include(":domain")
 include(":data")
 include(":feature-transactions")
 include(":feature-dashboard")
+include(":feature-auth")
  

@@ -7,6 +7,8 @@ import androidx.security.crypto.MasterKey
 interface SecureTokenStore {
     fun saveToken(token: String)
     fun readToken(): String?
+    fun savePinHash(pinHash: String)
+    fun readPinHash(): String?
     fun clear()
 }
 
@@ -29,11 +31,18 @@ class EncryptedTokenStore(context: Context) : SecureTokenStore {
 
     override fun readToken(): String? = prefs.getString(TOKEN_KEY, null)
 
+    override fun savePinHash(pinHash: String) {
+        prefs.edit().putString(PIN_HASH_KEY, pinHash).apply()
+    }
+
+    override fun readPinHash(): String? = prefs.getString(PIN_HASH_KEY, null)
+
     override fun clear() {
         prefs.edit().clear().apply()
     }
 
     private companion object {
         const val TOKEN_KEY = "auth_token"
+        const val PIN_HASH_KEY = "pin_hash"
     }
 }

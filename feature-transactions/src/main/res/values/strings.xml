@@ -1,5 +1,17 @@
 <resources>
     <string name="add_transaction">Add transaction</string>
+    <string name="edit_transaction">Edit transaction</string>
+    <string name="delete_transaction">Delete transaction</string>
+    <string name="delete_transaction_confirmation">Delete "%1$s"?</string>
+    <string name="delete">Delete</string>
+    <string name="search_transaction_hint">Search by description</string>
+    <string name="filter_all">All</string>
+    <string name="filter_income">Income</string>
+    <string name="filter_expense">Expense</string>
+    <string name="all_months">All months</string>
+    <string name="previous_month">Previous month</string>
+    <string name="next_month">Next month</string>
+    <string name="clear_month_filter">Clear month filter</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 </resources>

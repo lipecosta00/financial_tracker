@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.FinancialTransaction
 import com.example.feature.transactions.R
 
-class TransactionsAdapter : ListAdapter<FinancialTransaction, TransactionsAdapter.TransactionViewHolder>(DiffCallback) {
+class TransactionsAdapter(
+    private val onItemClick: (FinancialTransaction) -> Unit,
+    private val onItemLongClick: (FinancialTransaction) -> Unit
+) : ListAdapter<FinancialTransaction, TransactionsAdapter.TransactionViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -19,16 +22,25 @@ class TransactionsAdapter : ListAdapter<FinancialTransaction, TransactionsAdapte
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClick, onItemLongClick)
     }
 
     class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.transactionTitle)
         private val amount: TextView = itemView.findViewById(R.id.transactionAmount)
 
-        fun bind(item: FinancialTransaction) {
+        fun bind(
+            item: FinancialTransaction,
+            onItemClick: (FinancialTransaction) -> Unit,
+            onItemLongClick: (FinancialTransaction) -> Unit
+        ) {
             title.text = item.description
             amount.text = "${item.type}: ${item.amount}"
+            itemView.setOnClickListener { onItemClick(item) }
+            itemView.setOnLongClickListener {
+                onItemLongClick(item)
+                true
+            }
         }
     }
 

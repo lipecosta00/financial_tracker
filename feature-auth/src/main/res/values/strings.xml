@@ -1,0 +1,10 @@
+<resources>
+    <string name="create_pin">Create your PIN</string>
+    <string name="enter_pin">Enter your PIN</string>
+    <string name="pin_created">PIN created successfully</string>
+    <string name="auth_success">Authentication successful</string>
+    <string name="biometric_not_available">Biometric auth unavailable on this device</string>
+    <string name="biometric_title">Unlock Financial Tracker</string>
+    <string name="biometric_subtitle">Use biometrics to continue</string>
+    <string name="cancel">Cancel</string>
+</resources>
