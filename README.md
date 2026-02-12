@@ -1,8 +1,8 @@
-# Financial Tracker
+﻿# Financial Tracker
 
-Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura limpa, persistencia local, sincronizacao com API simulada e dashboard de insights.
+Aplicação Android modular para gerenciamento financeiro pessoal, com arquitetura limpa, persistência local, sincronização com API simulada e dashboard de insights.
 
-## Stack tecnologica
+## Stack tecnológica
 
 - Linguagem: Kotlin
 - UI: XML (fluxo principal) + Jetpack Compose (dashboard)
@@ -10,26 +10,26 @@ Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura
 - DI: Koin
 - Assincronia: Kotlin Coroutines + Flow
 - Estado: StateFlow, SharedFlow e LiveData (interoperabilidade)
-- Persistencia: Room (offline-first)
-- Seguranca local: EncryptedSharedPreferences + Android Keystore
+- Persistência: Room (offline-first)
+- Segurança local: EncryptedSharedPreferences + Android Keystore
 - Testes: JUnit, Truth, Espresso (Robot Pattern)
 
-## Estrutura de modulos
+## Estrutura de módulos
 
 - `:app`
-  - Bootstrap da aplicacao, navegacao principal e montagem de DI.
+  - Bootstrap da aplicação, navegação principal e montagem de DI.
 - `:core`
-  - Utilitarios compartilhados (money formatting, dispatchers, seguranca).
+  - Utilitários compartilhados (money formatting, dispatchers, segurança).
 - `:domain`
-  - Modelos de negocio, contratos de repositorio e casos de uso.
+  - Modelos de negócio, contratos de repositório e casos de uso.
 - `:data`
-  - Room, API fake e implementacoes de repositorio.
+  - Room, API fake e implementações de repositório.
 - `:feature-auth`
-  - Fluxo de autenticacao por PIN e biometria opcional.
+  - Fluxo de autenticação por PIN e biometria opcional.
 - `:feature-transactions`
-  - CRUD de transacoes, filtros e busca.
+  - CRUD de transações, filtros e busca.
 - `:feature-dashboard`
-  - Dashboard Compose com resumo e analiticos.
+  - Dashboard Compose com resumo e analíticos.
 
 ## Arquitetura e fluxo de dados
 
@@ -40,57 +40,57 @@ Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura
 - Consome casos de uso do `domain`.
 
 2. `domain` (Business)
-- Regras de negocio puras e independentes de Android framework.
+- Regras de negócio puras e independentes do framework Android.
 
 3. `data` (Data)
-- Implementa os contratos de repositorio.
-- Usa Room como fonte principal e API fake para sincronizacao.
+- Implementa os contratos de repositório.
+- Usa Room como fonte principal e API fake para sincronização.
 
-### Padrao de estado
+### Padrão de estado
 
-- `StateFlow`: estado de tela (renderizacao continua).
-- `SharedFlow`: eventos one-shot (mensagens e acoes pontuais).
-- `LiveData`: ponte para interoperabilidade em pontos especificos.
+- `StateFlow`: estado de tela (renderização contínua).
+- `SharedFlow`: eventos one-shot (mensagens e ações pontuais).
+- `LiveData`: ponte para interoperabilidade em pontos específicos.
 
-## Persistencia e sincronizacao
+## Persistência e sincronização
 
 - Banco local com Room (`FinancialDatabase`, `TransactionDao`).
-- Repositorio de transacoes com comportamento offline-first.
-- Operacoes de create/update/delete refletem no banco local e na API simulada.
-- `refresh()` sincroniza dados remotos no armazenamento local sem perder consistencia funcional.
+- Repositório de transações com comportamento offline-first.
+- Operações de create/update/delete refletem no banco local e na API simulada.
+- `refresh()` sincroniza dados remotos no armazenamento local sem perder consistência funcional.
 
 ## Funcionalidades principais
 
-### Autenticacao
+### Autenticação
 
 - PIN local com hash armazenado de forma segura.
 - Biometria opcional via AndroidX Biometric.
 
-### Transacoes
+### Transações
 
 - Criar, editar e excluir.
 - Filtro por tipo (`All`, `Income`, `Expense`).
-- Busca por descricao.
-- Navegacao por mes (anterior/proximo/limpar).
+- Busca por descrição.
+- Navegação por mês (anterior/próximo/limpar).
 
 ### Dashboard
 
 - Resumo mensal (income, expense, balance).
-- Tendencia multi-mes.
-- Breakdown de despesas por descricao.
-- Top despesas do periodo.
+- Tendência multi-mês.
+- Breakdown de despesas por descrição.
+- Top despesas do período.
 
 ## Qualidade e testes
 
 ### Unit tests
 
 - Casos de uso de resumo e insights.
-- ViewModels de autenticacao, transacoes e dashboard.
+- ViewModels de autenticação, transações e dashboard.
 
 ### UI tests
 
-- Espresso com Robot Pattern para fluxos de transacoes.
-- Robots encapsulam interacoes e assercoes para reduzir acoplamento dos testes.
+- Espresso com Robot Pattern para fluxos de transações.
+- Robots encapsulam interações e asserções para reduzir acoplamento dos testes.
 
 ## Requisitos de build
 
@@ -99,7 +99,7 @@ Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura
 - `compileSdk = 36`
 - Java 11
 
-## Comandos uteis
+## Comandos úteis
 
 ### Build
 
@@ -107,7 +107,7 @@ Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura
 .\gradlew assembleDebug
 ```
 
-### Testes unitarios
+### Testes unitários
 
 ```powershell
 .\gradlew testDebugUnitTest
@@ -127,7 +127,7 @@ Aplicacao Android modular para gerenciamento financeiro pessoal, com arquitetura
 
 ## Notas operacionais
 
-Em ambientes Windows, pode ocorrer lock temporario de `classes.jar` durante tarefas Gradle. Em caso de erro de lock:
+Em ambientes Windows, pode ocorrer lock temporário de `classes.jar` durante tarefas Gradle. Em caso de erro de lock:
 
 ```powershell
 .\gradlew --stop
